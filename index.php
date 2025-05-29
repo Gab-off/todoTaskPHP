@@ -33,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 }
 
-
 function filterTask($task) {
     $task = htmlspecialchars($task);
     $task = trim($task);
@@ -53,31 +52,39 @@ function filterTask($task) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<form action="index.php" method="POST">
-    Task: <input type="text" name="task">
-    <input type="radio" id="baixa" name="priority_task" value="baixa" checked>
-    <label for="baixa">baixa</label>
-    <input type="radio" id="media" name="priority_task" value="media">
-    <label for="media">média</label>
-    <input type="radio" id="alta" name="priority_task" value="alta">
-    <label for="alta">alta</label>
-    <br>
-    <br>
-    <input type="submit" name="submit" value="Add">
-    <input type="submit" name="reset" value="Reset">
-    <br>
-    <ul>
-        <?php foreach ($_SESSION['tasks'] as $index => $task): ?>
-        <li><p class="<?= $task['concluida']? 'concluido' : ''?>"><?= htmlspecialchars($task['tarefa'])  ?></p>
-                <form action="index.php" method="POST">
-                    <button class="<?= $task['concluida']? 'displayNone' : '' ?>" type="submit" name="concluir" value="<?= $index ?>">Concluir</button>
-                    <button type="submit" name="excluir" value="<?= $index ?>">Excluir</button>
+<div class="container">
+    <form action="index.php" method="POST">
+        Task: <input type="text" name="task">
+        <input type="radio" id="baixa" name="priority_task" value="low" checked>
+        <label for="baixa">baixa</label>
+        <input type="radio" id="media" name="priority_task" value="medium">
+        <label for="media">média</label>
+        <input type="radio" id="alta" name="priority_task" value="high">
+        <label for="alta">alta</label>
+        <br>
+        <br>
+        <div class="buttons-add">
+            <input type="submit" name="submit" value="Add">
+            <input type="submit" name="reset" value="Reset">
+        </div>
+        <br>
+        <ul>
+            <?php foreach ($_SESSION['tasks'] as $index => $task): ?>
+                <li><div class="task-item">
+                        <p class="<?= $task['concluida']? 'concluido' : ''?>"><?= htmlspecialchars($task['tarefa'])  ?></p>
+                        <div class="buttons-task">
+                        <form action="index.php" method="POST">
+                            <button class="<?= $task['concluida']? 'displayNone' : '' ?>" type="submit" name="concluir" value="<?= $index ?>">Concluir</button>
+                            <button type="submit" name="excluir" value="<?= $index ?>">Excluir</button>
+                        </form>
+                        </div>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ul
+    </form>
 
+</div>
 
-                </form>
-        </li>
-        <?php endforeach; ?>
-    </ul
-</form>
 </body>
 </html>
