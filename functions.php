@@ -1,7 +1,5 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
-}
+
 function initializeTasks()
 {
     if (!isset($_SESSION['tasks'])) {
@@ -9,12 +7,12 @@ function initializeTasks()
     }
 }
 
-function submitTask()
+function submitTask($taskDescription, $priority)
 {
     $_SESSION['tasks'][] = [
-        'tarefa' => filterTask($_POST['task']),
+        'tarefa' => filterTask($taskDescription),
         'concluida' => false,
-        'prioridade' => filterTask($_POST['priority_task'])
+        'prioridade' => filterTask($priority)
     ];
     header('Location: index.php');
     exit;
@@ -27,17 +25,17 @@ function resetTasks()
     exit;
 }
 
-function excluirTask()
+function excluirTask($excluir)
 {
-    unset($_SESSION['tasks'][$_POST['excluir']]);
+    unset($_SESSION['tasks'][$excluir]);
     $_SESSION['tasks'] = array_values($_SESSION['tasks']);
     header('Location: index.php');
     exit;
 }
 
-function toogleTaskConcluded()
+function toogleTaskConcluded($concluir)
 {
-        $_SESSION['tasks'][$_POST['concluir']]['concluida'] = !$_SESSION['tasks'][$_POST['concluir']]['concluida'];
+        $_SESSION['tasks'][$concluir]['concluida'] = !$_SESSION['tasks'][$concluir]['concluida'];
         header('Location: index.php');
         exit;
 }

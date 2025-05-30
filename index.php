@@ -1,38 +1,8 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['tasks'])) {
-    $_SESSION['tasks'] = [];
-}
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['submit'])) {
-        if (!empty($_POST['task'])) {
-            $_SESSION['tasks'][] = [
-                    'tarefa' => filterTask($_POST['task']) ,
-                    'concluida' => false,
-                    'prioridade' => filterTask($_POST['priority_task'])
-            ];
-            header('Location: index.php');
-            exit;
-        }
-    } elseif (isset($_POST['reset'])) {
-        $_SESSION['tasks'] = [];
-        header('Location: index.php');
-        exit;
-    } elseif (isset($_POST['excluir'])) {
-        unset($_SESSION['tasks'][$_POST['excluir']]);
-        $_SESSION['tasks'] = array_values($_SESSION['tasks']);
-        header('Location: index.php');
-        exit;
-    } elseif (isset($_POST['concluir'])) {
-        $_SESSION['tasks'][$_POST['concluir']]['concluida'] = !$_SESSION['tasks'][$_POST['concluir']]['concluida'];
-        header('Location: index.php');
-        exit;
-    }
-
-}
-
+require_once 'functions.php';
+require_once 'handle_post.php';
 
 ?>
 
@@ -66,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <ul>
             <?php foreach ($_SESSION['tasks'] as $index => $task): ?>
                 <li><div class="task-item">
-                        <p class="item <?= elementColor($task["prioridade"]) ?> <?= $task['concluida']? 'concluido' : ''?>"><?= htmlspecialchars($task['tarefa'])  ?></p>
+                        <p class="item <?= showTaskPriority($task["prioridade"]) ?> <?= $task['concluida']? 'concluido' : ''?>"><?= htmlspecialchars($task['tarefa'])  ?></p>
                         <div class="buttons-task">
                         <form action="index.php" method="POST">
                             <button type="submit" name="concluir" value="<?= $index ?>"><?= !$task['concluida'] ? 'finalizar tarefa' : 'não finalizada'?></button>
