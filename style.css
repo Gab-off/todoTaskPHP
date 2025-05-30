@@ -38,14 +38,40 @@ ul {
     background-color: #f5f5f5;
 }
 
-.low {
-
+.item {
+    position: relative;
 }
 
-.medium {
-
+.item::before {
+    content: "";
+    position: absolute;
+    bottom: -2.5px;
+    left: -20px;
+    display: block;
+    background-color: #ccc;
+    width: 5px;
+    height: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    border: 1px solid black;
 }
 
-.high {
+.sinalizePriority {
+    background-color: black;
+    width: 50px;
+    height: auto;
+    border-radius: 50%;
+}
 
+.item.low::before {
+    background-color: green;
+}
+
+.medium::before {
+    background-color: yellow;
+}
+
+.high::before {
+    background-color: red;
 }

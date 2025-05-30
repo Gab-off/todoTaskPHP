@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header('Location: index.php');
         exit;
     } elseif (isset($_POST['concluir'])) {
-        $_SESSION['tasks'][$_POST['concluir']]['concluida'] = true;
+        $_SESSION['tasks'][$_POST['concluir']]['concluida'] = !$_SESSION['tasks'][$_POST['concluir']]['concluida'];
         header('Location: index.php');
         exit;
     }
@@ -38,6 +38,18 @@ function filterTask($task) {
     $task = trim($task);
     $task = stripcslashes($task);
     return $task;
+}
+
+function elementColor($priority) {
+    $cssClass = '';
+    if ($priority == 'low') {
+        $cssClass = 'low';
+    } elseif ($priority == 'medium') {
+        $cssClass = 'medium';
+    } elseif ($priority == 'high') {
+        $cssClass = 'high';
+    }
+    return $cssClass;
 }
 ?>
 
@@ -71,10 +83,10 @@ function filterTask($task) {
         <ul>
             <?php foreach ($_SESSION['tasks'] as $index => $task): ?>
                 <li><div class="task-item">
-                        <p class="<?= $task['concluida']? 'concluido' : ''?>"><?= htmlspecialchars($task['tarefa'])  ?></p>
+                        <p class="item <?= elementColor($task["prioridade"]) ?> <?= $task['concluida']? 'concluido' : ''?>"><?= htmlspecialchars($task['tarefa'])  ?></p>
                         <div class="buttons-task">
                         <form action="index.php" method="POST">
-                            <button class="<?= $task['concluida']? 'displayNone' : '' ?>" type="submit" name="concluir" value="<?= $index ?>">Concluir</button>
+                            <button type="submit" name="concluir" value="<?= $index ?>"><?= !$task['concluida'] ? 'finalizar tarefa' : 'não finalizada'?></button>
                             <button type="submit" name="excluir" value="<?= $index ?>">Excluir</button>
                         </form>
                         </div>
