@@ -18,8 +18,8 @@ require_once 'handle_post.php';
 </head>
 <body>
 <div class="container">
-    <form action="index.php" method="POST">
-        Task: <input type="text" name="task">
+    <form id="taskForm" action="index.php" method="POST">
+        Task: <input id="taskText" type="text" name="task">
         <input type="radio" id="baixa" name="priority_task" value="low" checked>
         <label for="baixa">baixa</label>
         <input type="radio" id="media" name="priority_task" value="medium">
@@ -34,22 +34,23 @@ require_once 'handle_post.php';
         </div>
         <br>
         <ul>
+    </form>
             <?php foreach ($_SESSION['tasks'] as $index => $task): ?>
                 <li><div class="task-item">
                         <p class="item <?= showTaskPriority($task["prioridade"]) ?> <?= $task['concluida']? 'concluido' : ''?>"><?= htmlspecialchars($task['tarefa'])  ?></p>
                         <div class="buttons-task">
-                        <form action="index.php" method="POST">
+                        <form class="taskActionButtonsForm" action="index.php" method="POST">
                             <button type="submit" name="concluir" value="<?= $index ?>"><?= !$task['concluida'] ? 'finalizar tarefa' : 'não finalizada'?></button>
-                            <button type="submit" name="excluir" value="<?= $index ?>">Excluir</button>
+                            <button class="delete" type="submit" name="excluir" value="<?= $index ?>">Excluir</button>
                         </form>
                         </div>
                     </div>
                 </li>
             <?php endforeach; ?>
         </ul
-    </form>
 
 </div>
 
+<script src="script.js"></script>
 </body>
 </html>
