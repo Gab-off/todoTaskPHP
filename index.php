@@ -33,24 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 }
 
-function filterTask($task) {
-    $task = htmlspecialchars($task);
-    $task = trim($task);
-    $task = stripcslashes($task);
-    return $task;
-}
 
-function elementColor($priority) {
-    $cssClass = '';
-    if ($priority == 'low') {
-        $cssClass = 'low';
-    } elseif ($priority == 'medium') {
-        $cssClass = 'medium';
-    } elseif ($priority == 'high') {
-        $cssClass = 'high';
-    }
-    return $cssClass;
-}
 ?>
 
 <!doctype html>
