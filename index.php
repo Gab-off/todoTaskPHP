@@ -19,7 +19,7 @@ require_once 'handle_post.php';
 <body>
 <div class="container">
     <form id="taskForm" action="index.php" method="POST">
-        Task: <input id="taskText" type="text" name="task">
+        Task: <input id="taskText" type="text" name="task" required>
         <input type="radio" id="baixa" name="priority_task" value="low" checked>
         <label for="baixa">baixa</label>
         <input type="radio" id="media" name="priority_task" value="medium">
