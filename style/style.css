@@ -7,59 +7,62 @@
 /*INSERTION BAR*/
 @import './search.css';
 
-.concluido {
-    text-decoration: line-through;
-}
+/*Task section*/
+@import './task.css';
 
-.displayNone {
-    display: none;
-}
+/*.concluido {*/
+/*    text-decoration: line-through;*/
+/*}*/
 
-.buttons-add {
-    display: flex;
-    justify-content: center;
-}
+/*.displayNone {*/
+/*    display: none;*/
+/*}*/
 
-.task-item {
-    display: flex;
-    justify-content: space-between;
-    background-color: #f5f5f5;
-}
+/*.buttons-add {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*}*/
 
-.item {
-    position: relative;
-}
+/*.task-item {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    background-color: #f5f5f5;*/
+/*}*/
 
-.item::before {
-    content: "";
-    position: absolute;
-    bottom: -2.5px;
-    left: -20px;
-    display: block;
-    background-color: #ccc;
-    width: 5px;
-    height: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border-radius: 50%;
-    border: 1px solid black;
-}
+/*.item {*/
+/*    position: relative;*/
+/*}*/
 
-.sinalizePriority {
-    background-color: black;
-    width: 50px;
-    height: auto;
-    border-radius: 50%;
-}
+/*.item::before {*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    bottom: -2.5px;*/
+/*    left: -20px;*/
+/*    display: block;*/
+/*    background-color: #ccc;*/
+/*    width: 5px;*/
+/*    height: 5px;*/
+/*    margin-top: 10px;*/
+/*    margin-bottom: 10px;*/
+/*    border-radius: 50%;*/
+/*    border: 1px solid black;*/
+/*}*/
 
-.item.low::before {
-    background-color: green;
-}
+/*.sinalizePriority {*/
+/*    background-color: black;*/
+/*    width: 50px;*/
+/*    height: auto;*/
+/*    border-radius: 50%;*/
+/*}*/
 
-.medium::before {
-    background-color: yellow;
-}
+/*.item.low::before {*/
+/*    background-color: green;*/
+/*}*/
 
-.high::before {
-    background-color: red;
-}
+/*.medium::before {*/
+/*    background-color: yellow;*/
+/*}*/
+
+/*.high::before {*/
+/*    background-color: red;*/
+/*}*/

@@ -1,5 +1,7 @@
 <?php
 
+$_SESSION['priorityTasks']= ['low', 'medium', 'high'];
+
 function initializeTasks()
 {
     if (!isset($_SESSION['tasks'])) {

@@ -4,6 +4,7 @@ session_start();
 require_once 'functions.php';
 require_once 'handle_post.php';
 
+
 ?>
 
 <!doctype html>
@@ -38,10 +39,12 @@ require_once 'handle_post.php';
         <ul>
             <?php foreach ($_SESSION['tasks'] as $index => $task): ?>
                 <li><div class="task-item">
+                        <form class="taskPriority"  action="index.php" method="POST"></form>
+                            <span class="spanPriority" data-task-index="<?= $index ?>" data-priority="<?= $task['prioridade'] ?>"></span>
                         <p class="item <?= showTaskPriority($task["prioridade"]) ?> <?= $task['concluida']? 'concluido' : ''?>"><?= htmlspecialchars($task['tarefa'])  ?></p>
                         <div class="buttons-task">
                         <form class="taskActionButtonsForm" action="index.php" method="POST">
-                            <button type="submit" name="concluir" value="<?= $index ?>"><?= !$task['concluida'] ? 'finalizar tarefa' : 'não finalizada'?></button>
+                            <button class="concluir" type="submit" name="concluir" value="<?= $index ?>"><?= !$task['concluida'] ? 'Concluir' : 'Desfazer'?></button>
                             <button class="delete" type="submit" name="excluir" value="<?= $index ?>">Excluir</button>
                         </form>
                         </div>

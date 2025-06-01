@@ -1,4 +1,5 @@
 <?php
+
 require_once 'functions.php';
 
 initializeTasks();
@@ -6,7 +7,7 @@ initializeTasks();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if(isset($_POST['submit'])) {
         if(!empty($_POST['task'])) {
-            submitTask($_POST['task'], $_POST['priority_task']);
+            submitTask($_POST['task'], $_SESSION['priorityTasks'][0]);
         }
     } elseif(isset($_POST['reset'])) {
         resetTasks();

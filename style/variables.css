@@ -4,6 +4,10 @@
     --font-insert-button: #454545;
     --shadow-insert-bar: 1px 1px 10px 0 #00000026;
     --shadow-insert-FocusClicked: 1px 1px 10px 2px #00000026;
+    --task-color: #f0f0f0;
+    --low-priority: #84c0e3;
+    --medium-priority: #e3e384;
+    --high-priority: #e05353;
 }
 
 
