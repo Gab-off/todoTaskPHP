@@ -1,23 +1,11 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
+/*GLOBAL ITENS*/
+@import './reset.css';
+@import './geral.css';
+@import 'variables.css';
 
-body {
 
-}
-
-.container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 10px;
-}
-
-ul {
-    list-style: none;
-}
+/*INSERTION BAR*/
+@import './search.css';
 
 .concluido {
     text-decoration: line-through;

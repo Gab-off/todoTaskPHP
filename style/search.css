@@ -1,0 +1,52 @@
+/*Geral style for insert task form*/
+#taskForm {
+    width: 540px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 15px;
+    font-size: 22px;
+}
+
+/* Insert bar*/
+#taskText {
+    background-color: var(--insert-bar);
+    height: 60px;
+    border: 2px solid var(--insert-bar);
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: var(--shadow-insert-bar);
+    transition: 0.5s;
+}
+
+#taskText:active {
+    outline: none;
+}
+
+#taskText:focus {
+    outline: none;
+    border: 2px solid #c8c5c5FF;
+    box-shadow: var(--shadow-insert-FocusClicked);
+}
+
+/*Insert button*/
+#submitButton {
+    width: 160px;
+    height: 40px;
+    background-color: var(--insert-button);
+    color: var(--font-insert-button);
+    border: none;
+    border-radius: 5px;
+    box-shadow: var(--shadow-insert-bar);
+    align-self: center;
+    text-transform: uppercase;
+    transition: 0.2s;
+}
+
+#taskText:hover, #submitButton:hover {
+    cursor: pointer;
+    transform: scale(1.01);
+}
+
+
+

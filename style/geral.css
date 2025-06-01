@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'Fira Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://design.penpot.app/internal/gfonts/font/firamono/v15/N0bX2SlFPv1weGeLZDtgK_7SodY.woff2) format('woff2');
+
+}
+
+body {
+    font-family: 'Fira Mono', monospace;
+    width: 100vh;
+}
+
+.container {
+    max-width: 1440px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ul {
+    list-style: none;
+}
