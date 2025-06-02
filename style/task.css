@@ -9,8 +9,15 @@ ul {
     height: 60px;
     margin: 10px 0;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     border-radius: 10px;
+}
+
+.task-text {
+    display: flex;
+    height: 100%;
+    gap: 10px;
 }
 
 .spanPriority {
@@ -18,16 +25,71 @@ ul {
     height: 100%;
     border-radius: 10px 0 0 10px;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 .low {
     background-color: var(--low-priority);
+    transition: 0.5s;
 }
 
 .medium {
     background-color: var(--medium-priority);
+    transition: 0.5s;
 }
 
 .high {
     background-color: var(--high-priority);
+    transition: 0.5s;
+}
+
+.item {
+    height: 100%;
+    justify-self: center;
+    align-self: center;
+    align-content: center;
+}
+
+.complete {
+    text-decoration: line-through;
+    color: #bfbebe;
+}
+
+
+
+.taskActionButtonsForm {
+    height: 100%;
+    display: flex;
+}
+
+.concluir {
+    background-color: var(--finish-button);
+    width: 150px;
+    height: 60px;
+    text-transform: uppercase;
+    transition: 0.2s;
+}
+
+.buttonComplete {
+    background-color: var(--finish-button-completed);
+    color: #fff;
+    transition: 0.2s;
+}
+
+.delete {
+    width: 60px;
+    height: 60px;
+    border-radius: 0 10px 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: var(--delete-button);
+
+}
+
+
+.delete img {
+    width: 30px;
+    height: 30px;
 }

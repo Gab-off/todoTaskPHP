@@ -40,13 +40,15 @@ require_once 'handle_post.php';
             <?php foreach ($_SESSION['tasks'] as $index => $task): ?>
                 <li>
                     <div class="task-item">
-                        <form class="taskPriority"  action="index.php" method="POST"></form>
+                        <div class="task-text">
                             <span class="spanPriority <?= showTaskPriority($task["prioridade"]) ?>" data-task-index="<?= $index ?>" data-priority="<?= $task['prioridade'] ?>"></span>
-                        <p class="item  <?= $task['concluida']? 'concluido' : ''?>"><?= htmlspecialchars($task['tarefa'])  ?></p>
+                        <p class="item  <?= $task['concluida']? 'complete' : ''?>"><?= htmlspecialchars($task['tarefa'])  ?></p>
+                        </div>
                         <div class="buttons-task">
                         <form class="taskActionButtonsForm" action="index.php" method="POST">
-                            <button class="concluir" type="submit" name="concluir" value="<?= $index ?>"><?= !$task['concluida'] ? 'Concluir' : 'Desfazer'?></button>
-                            <button class="delete" type="submit" name="excluir" value="<?= $index ?>">Excluir</button>
+                            <button class="concluir <?= !$task['concluida']? 'concluir' : 'buttonComplete'?>" type="submit" name="concluir" value="<?= $index ?>"><?= !$task['concluida'] ? 'Concluir' : 'Desfazer'?></button>
+                            <button class="delete" type="submit" name="excluir" value="<?= $index ?>"><img src="icons/trash.svg"
+                                                                                                           alt="trash can"></button>
                         </form>
                         </div>
                     </div>

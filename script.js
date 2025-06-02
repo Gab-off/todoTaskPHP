@@ -19,38 +19,38 @@ spanButtons.forEach((button) => {
             const priorityPriority = button.dataset.priority;
 
             try {
-            const response = await fetch("requests.php", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
+                const response = await fetch("requests.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
 
-                body: new URLSearchParams({
-                    index: indexTask,
-                    priority: priorityPriority,
+                    body: new URLSearchParams({
+                        index: indexTask,
+                        priority: priorityPriority,
 
-                })
+                    })
 
-            });
+                });
 
-            if (!response.ok) {
-                throw new Error(`Erro de rede ou servidor: ${response.status} - ${response.statusText}`);
-            }
+                if (!response.ok) {
+                    throw new Error(`Erro de rede ou servidor: ${response.status} - ${response.statusText}`);
+                }
 
-            const data = await response.json();
-            if (data.status === "ok") {
-                const classesParaRemover = ['low', 'medium', 'high'];
+                const data = await response.json();
+                if (data.status === "ok") {
+                    const classesParaRemover = ['low', 'medium', 'high'];
 
-                button.classList.remove(...classesParaRemover); // Usa o spread para clareza
+                    button.classList.remove(...classesParaRemover); // Usa o spread para clareza
 
-                button.classList.add(data.new_priority); // Tenta adicionar a nova classe
-                button.dataset.priority = data.new_priority;
+                    button.classList.add(data.new_priority); // Tenta adicionar a nova classe
+                    button.dataset.priority = data.new_priority;
 
 
-            } else {
-                console.error("Erro do servidor:", data.status);
-                alert("Erro ao atualizar a prioridade: " + data.status);
-            }
+                } else {
+                    console.error("Erro do servidor:", data.status);
+                    alert("Erro ao atualizar a prioridade: " + data.status);
+                }
 
             } catch (error) {
                 console.error("Erro na requisição Fetch:", error);
