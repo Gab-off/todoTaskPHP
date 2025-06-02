@@ -38,10 +38,11 @@ require_once 'handle_post.php';
         <br>
         <ul>
             <?php foreach ($_SESSION['tasks'] as $index => $task): ?>
-                <li><div class="task-item">
+                <li>
+                    <div class="task-item">
                         <form class="taskPriority"  action="index.php" method="POST"></form>
-                            <span class="spanPriority" data-task-index="<?= $index ?>" data-priority="<?= $task['prioridade'] ?>"></span>
-                        <p class="item <?= showTaskPriority($task["prioridade"]) ?> <?= $task['concluida']? 'concluido' : ''?>"><?= htmlspecialchars($task['tarefa'])  ?></p>
+                            <span class="spanPriority <?= showTaskPriority($task["prioridade"]) ?>" data-task-index="<?= $index ?>" data-priority="<?= $task['prioridade'] ?>"></span>
+                        <p class="item  <?= $task['concluida']? 'concluido' : ''?>"><?= htmlspecialchars($task['tarefa'])  ?></p>
                         <div class="buttons-task">
                         <form class="taskActionButtonsForm" action="index.php" method="POST">
                             <button class="concluir" type="submit" name="concluir" value="<?= $index ?>"><?= !$task['concluida'] ? 'Concluir' : 'Desfazer'?></button>

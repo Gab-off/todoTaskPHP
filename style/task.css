@@ -13,11 +13,10 @@ ul {
     border-radius: 10px;
 }
 
-.task-item .spanPriority {
+.spanPriority {
     width: 60px;
     height: 100%;
     border-radius: 10px 0 0 10px;
-    background-color: red;
     cursor: pointer;
 }
 
